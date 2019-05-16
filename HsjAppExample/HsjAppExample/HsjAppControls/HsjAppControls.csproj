@@ -1,0 +1,36 @@
+﻿<Project Sdk="MSBuild.Sdk.Extras/1.6.68">
+
+  <PropertyGroup>
+    <TargetFrameworks>netstandard2.0;MonoAndroid81;Xamarin.iOS10;</TargetFrameworks>
+    <RootNamespace>Hsj.AppControls</RootNamespace>
+  </PropertyGroup>
+  
+  <PropertyGroup>
+    <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
+  </PropertyGroup>
+  
+  <ItemGroup>
+    <Folder Include="Droid\" />
+    <Folder Include="IOS\" />
+  </ItemGroup>
+
+
+  
+  <ItemGroup Condition=" '$(TargetFramework)' == 'MonoAndroid90' OR '$(TargetFramework)' == 'MonoAndroid81' ">
+    <Compile Include="Droid\**\*.cs" />
+  </ItemGroup>
+
+  <ItemGroup Condition=" '$(TargetFramework)' == 'Xamarin.iOS10' ">
+    <Compile Include="IOS\**\*.cs" />
+  </ItemGroup>
+   <ItemGroup>
+    <PackageReference Include="Xamarin.Forms" Version="3.6.0.220655" />
+  </ItemGroup>
+   <ItemGroup>
+     <None Remove="Iconfonts\Unicode.cs" />
+   </ItemGroup>
+   <ItemGroup>
+     <Compile Include="Iconfonts\Unicode.cs" />
+   </ItemGroup>
+  
+</Project>
